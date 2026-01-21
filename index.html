@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shivam Kumar | Portfolio</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#6366f1', // Indigo 500
+                        secondary: '#ec4899', // Pink 500
+                        dark: '#0f172a', // Slate 900
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'blob': 'blob 7s infinite',
+                        'gradient-x': 'gradient-x 15s ease infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        'gradient-x': {
+                            '0%, 100%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'left center'
+                            },
+                            '50%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'right center'
+                            },
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Glassmorphism Effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .dark .glass {
+            background: rgba(15, 23, 42, 0.7);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Toggle Button Animation */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #687280;
+        }
+        
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #687280;
+        }
+
+        /* Gradient Text Animation */
+        .text-gradient-animated {
+            background: linear-gradient(to right, #6366f1, #ec4899, #8b5cf6, #6366f1);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-x 5s linear infinite;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .dark ::-webkit-scrollbar-track {
+            background: #1e293b;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        /* Background Blob Styling */
+        .blob-bg {
+            position: absolute;
+            filter: blur(60px);
+            z-index: -1;
+            opacity: 0.5;
+            animation: blob 10s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Soothing Card Hover Effect */
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .card-hover:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        /* Typing Effect Cursor */
+        .typing-cursor::after {
+            content: '|';
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 dark:bg-dark dark:text-gray-200 transition-colors duration-500 font-sans overflow-x-hidden selection:bg-primary selection:text-white">
+
+    <!-- Enhanced Background Blobs -->
+    <div class="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        <div class="blob-bg bg-purple-300 dark:bg-purple-900 w-96 h-96 rounded-full top-0 left-0 -translate-x-1/2 -translate-y-1/2 mix-blend-multiply dark:mix-blend-lighten"></div>
+        <div class="blob-bg bg-pink-300 dark:bg-pink-900 w-96 h-96 rounded-full bottom-0 right-0 translate-x-1/2 translate-y-1/2 mix-blend-multiply dark:mix-blend-lighten animation-delay-2000"></div>
+        <div class="blob-bg bg-blue-300 dark:bg-blue-900 w-80 h-80 rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mix-blend-multiply dark:mix-blend-lighten opacity-30 animate-pulse"></div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="fixed w-full z-50 glass transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0 cursor-pointer group" onclick="window.scrollTo(0,0)">
+                    <span class="text-2xl font-bold tracking-tighter group-hover:text-primary transition-colors duration-300">
+                        Shivam<span class="text-primary inline-block transform group-hover:rotate-12 transition-transform">.</span>
+                    </span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-6">
+                        <a href="#home" class="hover:text-primary relative group px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                            Home
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                        <a href="#about" class="hover:text-primary relative group px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                            About
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                        <a href="#experience" class="hover:text-primary relative group px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                            Experience
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                        <a href="#projects" class="hover:text-primary relative group px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                            Projects
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                        <a href="#contact" class="hover:text-primary relative group px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                            Contact
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Theme Toggle & Mobile Menu Button -->
+                <div class="flex items-center gap-4">
+                    <!-- Theme Toggle Button -->
+                    <button id="theme-toggle" class="relative p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors focus:outline-none overflow-hidden h-10 w-10 flex items-center justify-center ring-2 ring-transparent hover:ring-primary/50">
+                        <div class="relative w-6 h-6">
+                            <i class="fas fa-sun absolute text-yellow-500 transform transition-transform duration-500 rotate-0 scale-100 dark:rotate-90 dark:scale-0"></i>
+                            <i class="fas fa-moon absolute text-blue-400 transform transition-transform duration-500 rotate-90 scale-0 dark:rotate-0 dark:scale-100"></i>
+                        </div>
+                    </button>
+
+                    <!-- Mobile menu button -->
+                    <div class="-mr-2 flex md:hidden">
+                        <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md hover:text-primary focus:outline-none" aria-controls="mobile-menu" aria-expanded="false">
+                            <i class="fas fa-bars text-xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-white dark:bg-dark border-t dark:border-gray-800 transition-all duration-300 ease-in-out" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 shadow-lg">
+                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-primary transition-colors">Home</a>
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-primary transition-colors">About</a>
+                <a href="#experience" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-primary transition-colors">Experience</a>
+                <a href="#projects" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-primary transition-colors">Projects</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-primary transition-colors">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="min-h-screen flex items-center justify-center pt-16 relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10">
+                <div class="flex flex-col-reverse md:flex-row items-center justify-between gap-12">
+                    <!-- Text Content -->
+                    <div class="flex-1 text-center md:text-left" data-aos="fade-right" data-aos-duration="1200">
+                        <p class="text-primary font-medium mb-3 text-lg tracking-wide uppercase" data-aos="fade-up" data-aos-delay="200">Welcome to my world</p>
+                        <h1 class="text-5xl md:text-7xl font-bold mb-4 tracking-tight leading-tight">
+                            Hi, I'm <br>
+                            <span class="text-gradient-animated">Shivam Kumar</span>
+                        </h1>
+                        <h2 class="text-2xl md:text-3xl text-gray-600 dark:text-gray-400 mb-6 font-light h-10">
+                            <span id="typewriter" class="typing-cursor text-primary font-semibold"></span>
+                        </h2>
+                        <p class="text-gray-600 dark:text-gray-400 mb-8 max-w-lg mx-auto md:mx-0 leading-relaxed text-lg" data-aos="fade-up" data-aos-delay="400">
+                            Passionate about building efficient software solutions. 5-star Java coder with a knack for algorithms and full-stack development.
+                        </p>
+                        <div class="flex flex-wrap gap-4 justify-center md:justify-start" data-aos="fade-up" data-aos-delay="600">
+                            <a href="#contact" class="bg-primary hover:bg-indigo-600 text-white px-8 py-3 rounded-full font-medium transition-all shadow-lg hover:shadow-indigo-500/30 transform hover:-translate-y-1 active:scale-95">
+                                Contact Me
+                            </a>
+                            <a href="https://github.com/shivamrana1826" target="_blank" class="border border-gray-300 dark:border-gray-600 hover:border-primary hover:text-primary px-8 py-3 rounded-full font-medium transition-all transform hover:-translate-y-1 active:scale-95 flex items-center gap-2">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Image with Float Animation -->
+                    <div class="flex-1 flex justify-center md:justify-end" data-aos="fade-left" data-aos-duration="1200">
+                        <div class="relative w-64 h-64 md:w-96 md:h-96 animate-float">
+                            <div class="absolute inset-0 bg-gradient-to-tr from-primary to-secondary rounded-full opacity-30 blur-3xl animate-pulse"></div>
+                            <!-- REPLACE THE SRC BELOW WITH YOUR ACTUAL IMAGE URL -->
+                            <img 
+                                src="https://api.dicebear.com/9.x/micah/svg?seed=Shivam&backgroundColor=b6e3f4" 
+                                alt="Shivam Kumar" 
+                                class="relative w-full h-full object-cover rounded-full border-4 border-white dark:border-gray-800 shadow-2xl transition-transform duration-500 cursor-pointer"
+                                onclick="alert('To change this image, open the code and replace the src attribute in the img tag with your photo URL!')"
+                            >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About / Education / Skills Section -->
+        <section id="about" class="py-24 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+                    <!-- Education -->
+                    <div data-aos="fade-right">
+                        <h2 class="text-3xl font-bold mb-8 flex items-center gap-3">
+                            <span class="p-2 bg-indigo-100 dark:bg-indigo-900/30 rounded-lg text-primary"><i class="fas fa-graduation-cap"></i></span> 
+                            Education
+                        </h2>
+                        <div class="relative border-l-2 border-indigo-200 dark:border-gray-700 ml-3 pl-8 pb-8 space-y-8">
+                            
+                            <!-- Education Item -->
+                            <div class="relative group">
+                                <div class="absolute w-4 h-4 bg-primary rounded-full -left-[41px] top-1 ring-4 ring-white dark:ring-dark transition-all group-hover:scale-125"></div>
+                                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-all border border-gray-100 dark:border-gray-700 card-hover">
+                                    <h3 class="text-xl font-bold text-gray-900 dark:text-white">B.Tech in Computer Science</h3>
+                                    <p class="text-primary font-medium mb-1">College of Engineering Roorkee</p>
+                                    <div class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mb-3">
+                                        <i class="far fa-calendar-alt"></i> August 2022 – May 2026
+                                        <span class="w-1 h-1 bg-gray-400 rounded-full"></span>
+                                        <span>GPA: 6.52/10</span>
+                                    </div>
+                                    <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+                                        <strong>Coursework:</strong> Data Structures, Computer Networks, Computer Architecture, Design and Analysis of Algorithms, Computational Theory, OOPs Using Java.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-12">
+                            <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                                <span class="p-2 bg-yellow-100 dark:bg-yellow-900/30 rounded-lg text-yellow-600"><i class="fas fa-trophy"></i></span>
+                                Achievements
+                            </h3>
+                            <ul class="space-y-4">
+                                <li class="flex items-start gap-4 bg-white dark:bg-gray-800 p-5 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 card-hover" data-aos="fade-up" data-aos-delay="100">
+                                    <div class="mt-1 text-yellow-400 text-xl"><i class="fas fa-star"></i></div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-900 dark:text-white">HackerRank Star</h4>
+                                        <p class="text-gray-600 dark:text-gray-300 text-sm">Earned 5-star Java and 4-star SQL badge. Completed 100+ coding problems.</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start gap-4 bg-white dark:bg-gray-800 p-5 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 card-hover" data-aos="fade-up" data-aos-delay="200">
+                                    <div class="mt-1 text-blue-400 text-xl"><i class="fas fa-certificate"></i></div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-900 dark:text-white">Winter Training Program</h4>
+                                        <p class="text-gray-600 dark:text-gray-300 text-sm">Certificate of Participation by COER University and Explorin Academy.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Skills -->
+                    <div data-aos="fade-left">
+                        <h2 class="text-3xl font-bold mb-8 flex items-center gap-3">
+                            <span class="p-2 bg-pink-100 dark:bg-pink-900/30 rounded-lg text-secondary"><i class="fas fa-code"></i></span>
+                            Technical Skills
+                        </h2>
+                        
+                        <div class="mb-8">
+                            <h4 class="text-sm uppercase tracking-wider text-gray-500 mb-4 font-semibold">Languages</h4>
+                            <div class="flex flex-wrap gap-3">
+                                <!-- Staggered Skills -->
+                                <span class="px-5 py-2.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full text-sm font-semibold hover:border-blue-500 hover:text-blue-500 transition-colors shadow-sm cursor-default" data-aos="zoom-in" data-aos-delay="100">Java</span>
+                                <span class="px-5 py-2.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full text-sm font-semibold hover:border-yellow-500 hover:text-yellow-500 transition-colors shadow-sm cursor-default" data-aos="zoom-in" data-aos-delay="150">Python</span>
+                                <span class="px-5 py-2.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full text-sm font-semibold hover:border-indigo-500 hover:text-indigo-500 transition-colors shadow-sm cursor-default" data-aos="zoom-in" data-aos-delay="200">C/C++</span>
+                                <span class="px-5 py-2.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full text-sm font-semibold hover:border-yellow-400 hover:text-yellow-400 transition-colors shadow-sm cursor-default" data-aos="zoom-in" data-aos-delay="250">JavaScript</span>
+                                <span class="px-5 py-2.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full text-sm font-semibold hover:border-orange-500 hover:text-orange-500 transition-colors shadow-sm cursor-default" data-aos="zoom-in" data-aos-delay="300">HTML/CSS</span>
+                            </div>
+                        </div>
+
+                        <div class="mb-8">
+                            <h4 class="text-sm uppercase tracking-wider text-gray-500 mb-4 font-semibold">Technologies & Tools</h4>
+                            <div class="flex flex-wrap gap-3">
+                                <span class="px-5 py-2.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full text-sm font-semibold hover:border-gray-500 hover:text-gray-500 transition-colors shadow-sm cursor-default" data-aos="zoom-in" data-aos-delay="350">Git & GitHub</span>
+                                <span class="px-5 py-2.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full text-sm font-semibold hover:border-green-500 hover:text-green-500 transition-colors shadow-sm cursor-default" data-aos="zoom-in" data-aos-delay="400">SQL</span>
+                                <span class="px-5 py-2.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full text-sm font-semibold hover:border-blue-400 hover:text-blue-400 transition-colors shadow-sm cursor-default" data-aos="zoom-in" data-aos-delay="450">VS Code</span>
+                                <span class="px-5 py-2.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full text-sm font-semibold hover:border-purple-500 hover:text-purple-500 transition-colors shadow-sm cursor-default" data-aos="zoom-in" data-aos-delay="500">IntelliJ IDEA</span>
+                                <span class="px-5 py-2.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full text-sm font-semibold hover:border-green-600 hover:text-green-600 transition-colors shadow-sm cursor-default" data-aos="zoom-in" data-aos-delay="550">MS-Excel</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="py-24 relative">
+             <div class="absolute inset-0 bg-primary/5 -skew-y-3 z-0 transform origin-top-left"></div>
+             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Professional Experience</h2>
+                    <div class="w-24 h-1.5 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
+                </div>
+
+                <div class="max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+                    <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 md:p-10 shadow-xl border border-gray-100 dark:border-gray-700 relative overflow-hidden group card-hover">
+                        <!-- Decorative bg icon -->
+                        <div class="absolute -bottom-10 -right-10 text-9xl opacity-5 group-hover:opacity-10 transition-opacity duration-500 rotate-12">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        
+                        <div class="relative z-10">
+                            <div class="flex flex-col md:flex-row md:items-start justify-between mb-6 gap-4">
+                                <div>
+                                    <h3 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-1">Java Developer Intern</h3>
+                                    <p class="text-primary font-medium text-lg flex items-center gap-2">
+                                        <i class="fas fa-building opacity-70"></i> InternPe (Remote)
+                                    </p>
+                                </div>
+                                <span class="px-4 py-2 bg-gray-100 dark:bg-gray-700/50 rounded-full text-sm font-semibold whitespace-nowrap border border-gray-200 dark:border-gray-600 text-gray-600 dark:text-gray-300">
+                                    Aug 2024 – Sept 2024
+                                </span>
+                            </div>
+                            
+                            <div class="space-y-4">
+                                <div class="flex items-start gap-3">
+                                    <div class="mt-1.5 min-w-[6px] h-1.5 rounded-full bg-secondary"></div>
+                                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed">Optimized search algorithms and improved execution time by <strong class="text-secondary">20%</strong> using efficient memory management and core data structures like hash maps and linked lists.</p>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div class="mt-1.5 min-w-[6px] h-1.5 rounded-full bg-secondary"></div>
+                                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed">Developed high-performance applications with file handling, multithreading, and exception management.</p>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div class="mt-1.5 min-w-[6px] h-1.5 rounded-full bg-secondary"></div>
+                                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed">Actively debugged and resolved coding challenges in a collaborative environment.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-24 bg-gray-50/50 dark:bg-black/20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <p class="text-primary font-semibold mb-2 tracking-wide uppercase">Portfolio</p>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>
+                    <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Here are some of the things I've built. Each project represents a unique challenge and learning opportunity.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Project 1 -->
+                    <div class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg border border-gray-100 dark:border-gray-700 card-hover flex flex-col h-full" data-aos="fade-up" data-aos-delay="100">
+                        <div class="h-3 bg-gradient-to-r from-blue-500 to-indigo-600"></div>
+                        <div class="p-8 flex-1 flex flex-col">
+                            <div class="flex justify-between items-start mb-6">
+                                <div class="p-3 bg-blue-50 dark:bg-blue-900/20 rounded-xl text-blue-600 dark:text-blue-400">
+                                    <i class="fab fa-java text-2xl"></i>
+                                </div>
+                                <a href="#" class="text-gray-400 hover:text-primary transition-colors"><i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                            
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">ATM Interface</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-6 text-sm flex-1 leading-relaxed">
+                                A secure, console-based ATM system. Implements core banking features like authentication, deposits, and withdrawals with robust error handling.
+                            </p>
+                            
+                            <div class="border-t border-gray-100 dark:border-gray-700 pt-6">
+                                <div class="flex flex-wrap gap-2 text-xs font-semibold">
+                                    <span class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1 rounded-full">Java</span>
+                                    <span class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1 rounded-full">OOP</span>
+                                    <span class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1 rounded-full">File I/O</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg border border-gray-100 dark:border-gray-700 card-hover flex flex-col h-full" data-aos="fade-up" data-aos-delay="200">
+                        <div class="h-3 bg-gradient-to-r from-green-400 to-teal-500"></div>
+                        <div class="p-8 flex-1 flex flex-col">
+                            <div class="flex justify-between items-start mb-6">
+                                <div class="p-3 bg-green-50 dark:bg-green-900/20 rounded-xl text-green-600 dark:text-green-400">
+                                    <i class="fas fa-heartbeat text-2xl"></i>
+                                </div>
+                                <a href="#" class="text-gray-400 hover:text-primary transition-colors"><i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                            
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">SELF MEDICOP</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-6 text-sm flex-1 leading-relaxed">
+                                Telehealth platform connecting patients with doctors. Features virtual consultations and EMDR therapy tools for mental health support.
+                            </p>
+                            
+                            <div class="border-t border-gray-100 dark:border-gray-700 pt-6">
+                                <div class="flex flex-wrap gap-2 text-xs font-semibold">
+                                    <span class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1 rounded-full">HTML</span>
+                                    <span class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1 rounded-full">CSS</span>
+                                    <span class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1 rounded-full">JavaScript</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg border border-gray-100 dark:border-gray-700 card-hover flex flex-col h-full" data-aos="fade-up" data-aos-delay="300">
+                        <div class="h-3 bg-gradient-to-r from-pink-500 to-rose-500"></div>
+                        <div class="p-8 flex-1 flex flex-col">
+                            <div class="flex justify-between items-start mb-6">
+                                <div class="p-3 bg-pink-50 dark:bg-pink-900/20 rounded-xl text-pink-600 dark:text-pink-400">
+                                    <i class="fas fa-shopping-cart text-2xl"></i>
+                                </div>
+                                <a href="#" class="text-gray-400 hover:text-primary transition-colors"><i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                            
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Shopping Website</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-6 text-sm flex-1 leading-relaxed">
+                                A responsive e-commerce interface with seamless product discovery, cart management, and form validation for a smooth user experience.
+                            </p>
+                            
+                            <div class="border-t border-gray-100 dark:border-gray-700 pt-6">
+                                <div class="flex flex-wrap gap-2 text-xs font-semibold">
+                                    <span class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1 rounded-full">Frontend</span>
+                                    <span class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1 rounded-full">UI/UX</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-24 relative overflow-hidden">
+            <!-- Decorative circle -->
+            <div class="absolute -left-20 top-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+            
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+                <div data-aos="zoom-in" data-aos-duration="1000">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Get In Touch</h2>
+                    <p class="text-gray-600 dark:text-gray-400 mb-12 max-w-xl mx-auto text-lg">
+                        I'm currently open to new opportunities. Whether you have a question, a project idea, or just want to say hi, my inbox is always open!
+                    </p>
+                    
+                    <div class="flex flex-col md:flex-row justify-center gap-6 mb-16">
+                        <a href="mailto:shivamrana1826@gmail.com" class="group flex items-center justify-center gap-4 bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all border border-gray-100 dark:border-gray-700 w-full md:w-80 card-hover">
+                            <div class="w-14 h-14 bg-red-50 text-red-500 dark:bg-red-900/20 dark:text-red-400 rounded-full flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="text-left">
+                                <div class="text-sm text-gray-500 dark:text-gray-400 font-medium">Email Me</div>
+                                <div class="font-bold text-gray-900 dark:text-white group-hover:text-primary transition-colors">shivamrana1826@gmail.com</div>
+                            </div>
+                        </a>
+                        
+                        <a href="tel:8630728101" class="group flex items-center justify-center gap-4 bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all border border-gray-100 dark:border-gray-700 w-full md:w-80 card-hover">
+                            <div class="w-14 h-14 bg-green-50 text-green-500 dark:bg-green-900/20 dark:text-green-400 rounded-full flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="text-left">
+                                <div class="text-sm text-gray-500 dark:text-gray-400 font-medium">Call Me</div>
+                                <div class="font-bold text-gray-900 dark:text-white group-hover:text-primary transition-colors">8630728101</div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="flex justify-center gap-8">
+                        <!-- LinkedIn -->
+                        <a href="https://www.linkedin.com/in/shivam-kumar-4ba237280?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="w-16 h-16 bg-white dark:bg-gray-800 text-blue-600 rounded-full flex items-center justify-center text-3xl hover:-translate-y-2 transition-all shadow-lg hover:shadow-blue-500/30 border border-gray-100 dark:border-gray-700">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        
+                        <!-- Instagram -->
+                        <a href="https://www.instagram.com/shivam_rana_oo1/" target="_blank" class="w-16 h-16 bg-white dark:bg-gray-800 text-pink-500 rounded-full flex items-center justify-center text-3xl hover:-translate-y-2 transition-all shadow-lg hover:shadow-pink-500/30 border border-gray-100 dark:border-gray-700">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+
+                        <!-- GitHub -->
+                        <a href="https://github.com/shivamrana1826" target="_blank" class="w-16 h-16 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-full flex items-center justify-center text-3xl hover:-translate-y-2 transition-all shadow-lg hover:shadow-gray-500/30 border border-gray-100 dark:border-gray-700">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 py-10">
+            <div class="max-w-7xl mx-auto px-4 text-center">
+                <div class="mb-4">
+                     <span class="text-2xl font-bold tracking-tighter cursor-default">
+                        Shivam<span class="text-primary">.</span>
+                    </span>
+                </div>
+                <p class="text-gray-500 dark:text-gray-400 mb-6">
+                    &copy; <span id="year"></span> Shivam Kumar. All rights reserved.
+                </p>
+                <div class="text-sm text-gray-400 flex justify-center gap-6">
+                     <span class="hover:text-primary transition-colors cursor-pointer">Privacy Policy</span>
+                     <span class="hover:text-primary transition-colors cursor-pointer">Terms of Service</span>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <!-- AOS Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        // Initialize AOS with Softer Settings
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 50,
+            easing: 'ease-out-cubic',
+            mirror: false
+        });
+
+        // Current Year for Footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Dark Mode Logic
+        const toggleButton = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement;
+
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            htmlElement.classList.add('dark');
+        } else {
+            htmlElement.classList.remove('dark');
+        }
+
+        toggleButton.addEventListener('click', () => {
+            if (htmlElement.classList.contains('dark')) {
+                htmlElement.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                htmlElement.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+        });
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+
+        // Typewriter Effect
+        const text = "Computer Science Engineer & Java Developer";
+        const typingElement = document.getElementById("typewriter");
+        let i = 0;
+
+        function typeWriter() {
+            if (i < text.length) {
+                typingElement.innerHTML += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 50); // Speed of typing
+            }
+        }
+        
+        // Start typing after a short delay
+        setTimeout(typeWriter, 1000);
+    </script>
+</body>
+</html>
