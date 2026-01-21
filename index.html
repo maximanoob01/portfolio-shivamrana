@@ -90,6 +90,7 @@
         .text-gradient-animated {
             background: linear-gradient(to right, #6366f1, #ec4899, #8b5cf6, #6366f1);
             background-size: 200% auto;
+            background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: gradient-x 5s linear infinite;
@@ -252,7 +253,7 @@
                             <div class="absolute inset-0 bg-gradient-to-tr from-primary to-secondary rounded-full opacity-30 blur-3xl animate-pulse"></div>
                             <!-- REPLACE THE SRC BELOW WITH YOUR ACTUAL IMAGE URL -->
                             <img 
-                                src="https://api.dicebear.com/9.x/micah/svg?seed=Shivam&backgroundColor=b6e3f4" 
+                                src="image.png" 
                                 alt="Shivam Kumar" 
                                 class="relative w-full h-full object-cover rounded-full border-4 border-white dark:border-gray-800 shadow-2xl transition-transform duration-500 cursor-pointer"
                                 onclick="alert('To change this image, open the code and replace the src attribute in the img tag with your photo URL!')"
