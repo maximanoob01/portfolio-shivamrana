@@ -241,8 +241,14 @@
                             <a href="#contact" class="bg-primary hover:bg-indigo-600 text-white px-8 py-3 rounded-full font-medium transition-all shadow-lg hover:shadow-indigo-500/30 transform hover:-translate-y-1 active:scale-95">
                                 Contact Me
                             </a>
-                            <a href="https://github.com/shivamrana1826" target="_blank" class="border border-gray-300 dark:border-gray-600 hover:border-primary hover:text-primary px-8 py-3 rounded-full font-medium transition-all transform hover:-translate-y-1 active:scale-95 flex items-center gap-2">
-                                <i class="fab fa-github"></i> GitHub
+                            
+                            <!-- Resume Button -->
+                            <a href="resume.pdf" target="_blank" class="bg-white dark:bg-gray-800 text-gray-900 dark:text-white border border-gray-200 dark:border-gray-700 hover:border-primary hover:text-primary px-8 py-3 rounded-full font-medium transition-all shadow-md hover:shadow-lg transform hover:-translate-y-1 active:scale-95 flex items-center gap-2">
+                                <i class="fas fa-file-alt"></i> View Resume
+                            </a>
+
+                            <a href="https://github.com/shivamrana1826" target="_blank" class="border border-gray-300 dark:border-gray-600 hover:border-gray-900 dark:hover:border-white hover:text-gray-900 dark:hover:text-white px-3 py-3 rounded-full font-medium transition-all transform hover:-translate-y-1 active:scale-95 flex items-center justify-center w-12 h-12">
+                                <i class="fab fa-github text-xl"></i>
                             </a>
                         </div>
                     </div>
@@ -253,7 +259,7 @@
                             <div class="absolute inset-0 bg-gradient-to-tr from-primary to-secondary rounded-full opacity-30 blur-3xl animate-pulse"></div>
                             <!-- REPLACE THE SRC BELOW WITH YOUR ACTUAL IMAGE URL -->
                             <img 
-                                src="image.png" 
+                                src="https://api.dicebear.com/9.x/micah/svg?seed=Shivam&backgroundColor=b6e3f4" 
                                 alt="Shivam Kumar" 
                                 class="relative w-full h-full object-cover rounded-full border-4 border-white dark:border-gray-800 shadow-2xl transition-transform duration-500 cursor-pointer"
                                 onclick="alert('To change this image, open the code and replace the src attribute in the img tag with your photo URL!')"
@@ -277,22 +283,53 @@
                         </h2>
                         <div class="relative border-l-2 border-indigo-200 dark:border-gray-700 ml-3 pl-8 pb-8 space-y-8">
                             
-                            <!-- Education Item -->
+                            <!-- College -->
                             <div class="relative group">
-                                <div class="absolute w-4 h-4 bg-primary rounded-full -left-[41px] top-1 ring-4 ring-white dark:ring-dark transition-all group-hover:scale-125"></div>
-                                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-all border border-gray-100 dark:border-gray-700 card-hover">
-                                    <h3 class="text-xl font-bold text-gray-900 dark:text-white">B.Tech in Computer Science</h3>
-                                    <p class="text-primary font-medium mb-1">College of Engineering Roorkee</p>
-                                    <div class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mb-3">
-                                        <i class="far fa-calendar-alt"></i> August 2022 – May 2026
-                                        <span class="w-1 h-1 bg-gray-400 rounded-full"></span>
-                                        <span>GPA: 6.52/10</span>
+                                <div class="absolute w-4 h-4 bg-primary rounded-full -left-[41px] top-8 ring-4 ring-white dark:ring-dark transition-all group-hover:scale-125"></div>
+                                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-all border border-gray-100 dark:border-gray-700 card-hover flex gap-4">
+                                    <!-- College Logo Placeholder -->
+                                    <div class="flex-shrink-0">
+                                        <div class="w-16 h-16 bg-gray-100 dark:bg-gray-700 rounded-lg overflow-hidden flex items-center justify-center border border-gray-200 dark:border-gray-600">
+                                            <img src="college.jpg" alt="COER Logo" class="w-full h-full object-contain p-1" onerror="this.src='https://via.placeholder.com/64?text=Logo'">
+                                        </div>
                                     </div>
-                                    <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
-                                        <strong>Coursework:</strong> Data Structures, Computer Networks, Computer Architecture, Design and Analysis of Algorithms, Computational Theory, OOPs Using Java.
-                                    </p>
+                                    
+                                    <div>
+                                        <h3 class="text-xl font-bold text-gray-900 dark:text-white leading-tight">B.Tech in Computer Science</h3>
+                                        <p class="text-primary font-medium text-sm mt-1">College of Engineering Roorkee</p>
+                                        <div class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400 my-2">
+                                            <i class="far fa-calendar-alt"></i> 2022 – 2026
+                                            <span class="w-1 h-1 bg-gray-400 rounded-full"></span>
+                                            <span>GPA: 6.52/10</span>
+                                        </div>
+                                        <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+                                            <strong>Coursework:</strong> Data Structures, OOPs using Java, DAA, Networks.
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
+
+                            <!-- School -->
+                            <div class="relative group">
+                                <div class="absolute w-4 h-4 bg-secondary rounded-full -left-[41px] top-8 ring-4 ring-white dark:ring-dark transition-all group-hover:scale-125"></div>
+                                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-all border border-gray-100 dark:border-gray-700 card-hover flex gap-4">
+                                    <!-- School Logo Placeholder -->
+                                    <div class="flex-shrink-0">
+                                        <div class="w-16 h-16 bg-gray-100 dark:bg-gray-700 rounded-lg overflow-hidden flex items-center justify-center border border-gray-200 dark:border-gray-600">
+                                            <img src="school.png" alt="School Logo" class="w-full h-full object-contain p-1" onerror="this.src='https://via.placeholder.com/64?text=Logo'">
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <h3 class="text-xl font-bold text-gray-900 dark:text-white leading-tight">Intermediate (Class XII)</h3>
+                                        <p class="text-secondary font-medium text-sm mt-1">Christu Jyoti Convent Senior Secondary School, Baghpat</p>
+                                        <div class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400 mt-2">
+                                            <i class="far fa-calendar-alt"></i> Completed 2022
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                         
                         <div class="mt-12">
